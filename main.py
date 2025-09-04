@@ -1,16 +1,13 @@
-# # This is a sample Python script.
-#
-# # Press Shift+F10 to execute it or replace it with your code.
-# # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-#
-#
-# def print_hi(name):
-#     # Use a breakpoint in the code line below to debug your script.
-#     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-#
-#
-# # Press the green button in the gutter to run the script.
-# if __name__ == '__main__':
-#     print_hi('PyCharm')
-#
-# # See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# main.py — run the ADK dev UI or terminal chat from PyCharm
+import os, subprocess, sys
+
+# Choose one:
+MODE = os.environ.get("ADK_MODE", "web")  # "web" or "run"
+
+if MODE == "web":
+    cmd = ["adk", "web"]
+else:
+    cmd = ["adk", "run", "multi_tool_agent"]
+
+# Runs with whatever venv PyCharm is using for this run config.
+sys.exit(subprocess.call(cmd))
